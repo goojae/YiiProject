@@ -1,9 +1,6 @@
 <?php
-
 namespace app\models;
-
 use Yii;
-
 /**
  * This is the model class for table "customers".
  *
@@ -38,7 +35,6 @@ class Customers extends \yii\db\ActiveRecord
     {
         return 'customers';
     }
-
     /**
      * @inheritdoc
      */
@@ -53,7 +49,6 @@ class Customers extends \yii\db\ActiveRecord
             [['p', 'tel', 'work', 'position_id', 'interest', 'avatar'], 'string', 'max' => 255],
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -75,27 +70,27 @@ class Customers extends \yii\db\ActiveRecord
             'group_id' => 'กลุ่มงาน',
             'position_id' => 'ตำแหน่ง',
             'interest' => 'ความสนใจ',
-            'avatar' => 'รูปถ่ายหลักฐาน',
+            'avatar' => 'รูปประจำตัว',
             'fb' => 'Facebook',
             'line' => 'Line',
             'email' => 'Email',
             'createdate' => 'Createdate',
-            'updatedate' => 'วันที่ชำระ',
+            'updatedate' => 'วันที่แก้ไข',
         ];
     }
-    public function getCustChw(){
+    public function getCuschw(){
         return $this->hasOne(Chw::className(), ['id'=>'c']);
     }
-    public function getCustAmp(){
+    public function getCusamp(){
         return $this->hasOne(Amp::className(), ['id'=>'a']);
     }
-    public function getCustTmb(){
+    public function getCustmb(){
         return $this->hasOne(Tmb::className(), ['id'=>'t']);
     }
-    public function getCustPos(){
+    public function getPos(){
         return $this->hasOne(Positions::className(), ['id'=>'position_id']);
     }
-     public function getCustDep(){
+    public function getCusdep(){
         return $this->hasOne(Departments::className(), ['id'=>'department_id']);
     }
 }

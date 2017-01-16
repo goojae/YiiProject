@@ -31,16 +31,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'addr',
-            't',
-            'a',
-            'c',
+            [
+                'attribute'=>'t',
+                'value'=>$model->custmb->name
+            ],
+            [
+                'attribute'=>'a',
+                'value'=>$model->cusamp->name
+            ],
+            [
+                'attribute'=>'c',
+                'value'=>$model->cuschw->name
+            ], 
             'birthday',
             'cid',
             'p',
             'tel',
             'work',
             'department_id',
-            'group_id',
+            
+            [
+                'attribute'=>'group_id',
+                'value'=>$model->cusdep->depgroup->name
+            ],
             'position_id',
             'interest',
             'avatar',

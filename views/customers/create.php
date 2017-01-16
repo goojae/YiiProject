@@ -1,28 +1,24 @@
 <?php
-
 use yii\helpers\Html;
-
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Customers */
-
-$this->title = 'เพิ่มลูกค้า';
-$this->params['breadcrumbs'][] = ['label' => 'ลูกค้า', 'url' => ['index']];
+$this->title = 'Create Customers';
+$this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customers-create">
-<div class="departments-create">
-    <div class="panel panel-info">
-        <div class="panel-heading"><h4><i class="glyphicon glyphicon-pencil"></i> <?= Html::encode($this->title) ?></h4></div>
+
+   <div class="panel panel-primary">
+        <div class="panel-heading"><h4><i class="glyphicon glyphicon-pencil"></i> บันทึกข้อมูลพนักงาน</h4></div>
         <div class="panel-body">
             <?=
             $this->render('_form', [
                 'model' => $model,
-                'ch' => [],
-                'am' => []
+                'ch'=>[],
+                'am'=>[],
+                'depart'=>[]
             ])
             ?>
         </div>
     </div>
-
 </div>
