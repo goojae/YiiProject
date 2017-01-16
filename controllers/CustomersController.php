@@ -8,6 +8,8 @@ use app\models\CustomersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\widgets\DepDrop;
+use yii\helpers\ArrayHelper;
 
 /**
  * CustomersController implements the CRUD actions for Customers model.
@@ -66,7 +68,7 @@ class CustomersController extends Controller
         $model = new Customers();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -89,6 +91,8 @@ class CustomersController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'ch' => $ch,
+                'am' => $am,
             ]);
         }
     }
@@ -119,6 +123,52 @@ class CustomersController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    
+    public function actionGetCh(){
+        $out=[];
+        if(isset($_POST['depdrop_parents'])){
+            $parants= $_POST['depdrop_parents'];
+            if($parants!=NULL){
+                $c=$parants[0];
+                $out=  $this->getCh($c);
+                echo \yii\helpers\Json::encode(['output'=>$out,'select'=>'']);
+                return;
+            }
+            echo \yii\helpers\Json::encode(['output'=>'','select'=>'']);
+        }
+    }
+    
+    protected function getCh($id){
+        $datas = \app\models\Amp::find()->where(['chw_id'=>$id])->all();
+        return $this->MapData($datas,'id','name');
+    }
+    
+    public function actionGetAm(){
+        $out=[];
+        if(isset($_POST['depdrop_parents'])){
+            $ids= $_POST['depdrop_parents'];
+            $c=  empty($ids[0]) ? NULL : $ids[0];
+            $a=  empty($ids[1]) ? NULL : $ids[1];
+            if($c!=NULL){
+                $data=  $this->getAm($a);
+                echo \yii\helpers\Json::encode(['output'=>$out,'select'=>'']);
+                return;
+            }
+            echo \yii\helpers\Json::encode(['output'=>'','select'=>'']);
+        }
+    }
+    
+    protected function getAm($id){
+        $datas = \app\models\Tmb::find()->where(['amp_id'=>$id])->all();
+        return $this->MapData($datas,'id','name');
+    }
+    
+    protected function MapData(){
+        $obj=[];
+        foreach ($datas as $key => $value){
+            array_push($obj, ['id']=>$value->{$fieldID,'id'});
         }
     }
 }

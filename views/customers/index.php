@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CustomersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Customers';
+$this->title = 'ลูกค้า';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customers-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Customers', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มลูกค้า', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,20 +24,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
             'addr',
             't',
             'a',
-            // 'c',
-            // 'birthday',
-            // 'cid',
-            // 'p',
-            // 'tel',
-            // 'work',
-            // 'department_id',
-            // 'group_id',
-            // 'position_id',
+            'c',
+            //'birthday',
+            'cid',
+            'p',
+            //'tel',
+            //'work',
+            'department_id',
+            'group_id',
+            'position_id',
             // 'interest',
             // 'avatar',
             // 'fb',

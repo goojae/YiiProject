@@ -49,7 +49,7 @@ class Customers extends \yii\db\ActiveRecord
             [['birthday', 'createdate', 'updatedate'], 'safe'],
             [['name'], 'string', 'max' => 150],
             [['addr', 'fb', 'line', 'email'], 'string', 'max' => 100],
-            [['cid'], 'string', 'max' => 13],
+            [['cid'], 'string', 'max' => 17],
             [['p', 'tel', 'work', 'position_id', 'interest', 'avatar'], 'string', 'max' => 255],
         ];
     }
@@ -70,7 +70,7 @@ class Customers extends \yii\db\ActiveRecord
             'cid' => 'เลขบัตร ปชช.',
             'p' => 'รหัสไปรษณย์',
             'tel' => 'โทรศัพท์',
-            'work' => 'l5komujme\'ko',
+            'work' => 'งานที่ทำ',
             'department_id' => 'แผนก',
             'group_id' => 'กลุ่มงาน',
             'position_id' => 'ตำแหน่ง',
@@ -82,5 +82,20 @@ class Customers extends \yii\db\ActiveRecord
             'createdate' => 'Createdate',
             'updatedate' => 'วันที่ชำระ',
         ];
+    }
+    public function getCustChw(){
+        return $this->hasOne(Chw::className(), ['id'=>'c']);
+    }
+    public function getCustAmp(){
+        return $this->hasOne(Amp::className(), ['id'=>'a']);
+    }
+    public function getCustTmb(){
+        return $this->hasOne(Tmb::className(), ['id'=>'t']);
+    }
+    public function getCustPos(){
+        return $this->hasOne(Positions::className(), ['id'=>'position_id']);
+    }
+     public function getCustDep(){
+        return $this->hasOne(Departments::className(), ['id'=>'department_id']);
     }
 }

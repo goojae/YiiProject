@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Departments */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Departments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'แผนก', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="departments-view">

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Positions */
 
-$this->title = 'Create Positions';
-$this->params['breadcrumbs'][] = ['label' => 'Positions', 'url' => ['index']];
+$this->title = 'เพิ่มตำแหน่ง';
+$this->params['breadcrumbs'][] = ['label' => 'ตำแหน่ง', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="positions-create">

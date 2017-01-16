@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Customers */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'ลูกค้า', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customers-view">
