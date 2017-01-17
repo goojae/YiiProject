@@ -1,4 +1,3 @@
-
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -6,6 +5,7 @@ use kartik\widgets\DepDrop;
 use kartik\widgets\Select2;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customers */
 /* @var $form yii\widgets\ActiveForm */
@@ -13,7 +13,9 @@ use yii\helpers\ArrayHelper;
 
 <div class="customers-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>[
+        'enctype'=>'multipart/form-data'
+    ]]); ?>
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4">
              <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -121,7 +123,7 @@ use yii\helpers\ArrayHelper;
         <div class="col-xs-3 col-sm-3 col-md-3">            
             <?=
             $form->field($model, 'department_id')->widget(DepDrop::className(), [
-                        'data' => [$ch],
+                        'data' => [$depart],
                         'options' => ['placeholder' => '<--เลือกแผนก-->'],
                         'type' => DepDrop::TYPE_SELECT2,
                         'select2Options' => ['pluginOptions' => ['allowClear' => true]],
@@ -146,9 +148,17 @@ use yii\helpers\ArrayHelper;
         </div>
     </div>
 
-    <?= $form->field($model, 'interest')->textInput(['maxlength' => true]) ?>
+   <?= $form->field($model, 'interest')
+                ->checkboxList(\app\models\Customers::itemAlias('interest')) ?>  
 
-    <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
+    <div class="row">        
+        <div class="col-xs-12 col-sm-12 col-md-12  ">
+            <?= $form->field($model, 'avatar_img')->label('รูปประจำตัว')->fileInput() ?>       
+        </div>    
+    </div>     
+    <?php if ($model->avatar) { ?>
+        <?= Html::img('avatars/' . $model->avatar, ['class' => 'img-responsive img-circle', 'width' => '150px;']); ?>
+    <?php } ?> 
 
 
     <div class="form-group">

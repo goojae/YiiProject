@@ -1,13 +1,10 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Customers */
-
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'ลูกค้า', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customers-view">
@@ -24,44 +21,49 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
+<?= Html::img('avatars/'.$model->avatar,['class'=>'thumbnail img-responsive','style'=>'width: 50 px;'])?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
-            'addr',
+            'addr', 
             [
-                'attribute'=>'t',
-                'value'=>$model->custmb->name
+                'attribute'=>'c',
+                'value'=>$model->cuschw->name
             ],
             [
                 'attribute'=>'a',
                 'value'=>$model->cusamp->name
             ],
             [
-                'attribute'=>'c',
-                'value'=>$model->cuschw->name
-            ], 
+                'attribute'=>'t',
+                'value'=>$model->custmb->name
+            ],            
             'birthday',
             'cid',
             'p',
             'tel',
             'work',
-            'department_id',
-            
-            [
+             [
                 'attribute'=>'group_id',
                 'value'=>$model->cusdep->depgroup->name
             ],
-            'position_id',
-            'interest',
-            'avatar',
+            [
+                'attribute'=>'department_id',
+                'value'=>$model->cusdep->name
+            ],
+            [
+                'attribute'=>'position_id',
+                'value'=>$model->pos->name
+            ],
+            
+            'interest',           
             'fb',
             'line',
             'email:email',
-            'createdate',
-            'updatedate',
+//            'createdate',
+//            'updatedate',
         ],
     ]) ?>
 
